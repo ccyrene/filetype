@@ -8,65 +8,67 @@ const (
 )
 
 var (
-	TypeEpub   = newType("epub", "application/epub+zip")
-	TypeZip    = newType("zip", "application/zip")
-	TypeTar    = newType("tar", "application/x-tar")
-	TypeRar    = newType("rar", "application/vnd.rar")
-	TypeGz     = newType("gz", "application/gzip")
-	TypeBz2    = newType("bz2", "application/x-bzip2")
-	Type7z     = newType("7z", "application/x-7z-compressed")
-	TypeXz     = newType("xz", "application/x-xz")
-	TypeZstd   = newType("zst", "application/zstd")
-	TypePdf    = newType("pdf", "application/pdf")
-	TypeExe    = newType("exe", "application/vnd.microsoft.portable-executable")
-	TypeSwf    = newType("swf", "application/x-shockwave-flash")
-	TypeRtf    = newType("rtf", "application/rtf")
-	TypeEot    = newType("eot", "application/octet-stream")
-	TypePs     = newType("ps", "application/postscript")
-	TypeSqlite = newType("sqlite", "application/vnd.sqlite3")
-	TypeNes    = newType("nes", "application/x-nintendo-nes-rom")
-	TypeCrx    = newType("crx", "application/x-google-chrome-extension")
-	TypeCab    = newType("cab", "application/vnd.ms-cab-compressed")
-	TypeDeb    = newType("deb", "application/vnd.debian.binary-package")
-	TypeAr     = newType("ar", "application/x-unix-archive")
-	TypeZ      = newType("Z", "application/x-compress")
-	TypeLz     = newType("lz", "application/x-lzip")
-	TypeRpm    = newType("rpm", "application/x-rpm")
-	TypeElf    = newType("elf", "application/x-executable")
-	TypeDcm    = newType("dcm", "application/dicom")
-	TypeIso    = newType("iso", "application/x-iso9660-image")
-	TypeMachO  = newType("macho", "application/x-mach-binary") // Mach-O binaries have no common extension.
+	TypeEpub    = newType("epub", "application/epub+zip")
+	TypeZip     = newType("zip", "application/zip")
+	TypeTar     = newType("tar", "application/x-tar")
+	TypeRar     = newType("rar", "application/vnd.rar")
+	TypeGz      = newType("gz", "application/gzip")
+	TypeBz2     = newType("bz2", "application/x-bzip2")
+	Type7z      = newType("7z", "application/x-7z-compressed")
+	TypeXz      = newType("xz", "application/x-xz")
+	TypeZstd    = newType("zst", "application/zstd")
+	TypePdf     = newType("pdf", "application/pdf")
+	TypeExe     = newType("exe", "application/vnd.microsoft.portable-executable")
+	TypeSwf     = newType("swf", "application/x-shockwave-flash")
+	TypeRtf     = newType("rtf", "application/rtf")
+	TypeEot     = newType("eot", "application/octet-stream")
+	TypePs      = newType("ps", "application/postscript")
+	TypeSqlite  = newType("sqlite", "application/vnd.sqlite3")
+	TypeNes     = newType("nes", "application/x-nintendo-nes-rom")
+	TypeCrx     = newType("crx", "application/x-google-chrome-extension")
+	TypeCab     = newType("cab", "application/vnd.ms-cab-compressed")
+	TypeDeb     = newType("deb", "application/vnd.debian.binary-package")
+	TypeAr      = newType("ar", "application/x-unix-archive")
+	TypeZ       = newType("Z", "application/x-compress")
+	TypeLz      = newType("lz", "application/x-lzip")
+	TypeRpm     = newType("rpm", "application/x-rpm")
+	TypeElf     = newType("elf", "application/x-executable")
+	TypeDcm     = newType("dcm", "application/dicom")
+	TypeIso     = newType("iso", "application/x-iso9660-image")
+	TypeMachO   = newType("macho", "application/x-mach-binary") // Mach-O binaries have no common extension.
+	TypeParquet = newType("parquet", "application/vnd.apache.parquet")
 )
 
 var Archive = Map{
-	TypeEpub:   bytePrefixMatcher(epubMagic),
-	TypeZip:    Zip,
-	TypeTar:    Tar,
-	TypeRar:    Rar,
-	TypeGz:     bytePrefixMatcher(gzMagic),
-	TypeBz2:    bytePrefixMatcher(bz2Magic),
-	Type7z:     bytePrefixMatcher(sevenzMagic),
-	TypeXz:     bytePrefixMatcher(xzMagic),
-	TypeZstd:   Zst,
-	TypePdf:    bytePrefixMatcher(pdfMagic),
-	TypeExe:    bytePrefixMatcher(exeMagic),
-	TypeSwf:    Swf,
-	TypeRtf:    bytePrefixMatcher(rtfMagic),
-	TypeEot:    Eot,
-	TypePs:     bytePrefixMatcher(psMagic),
-	TypeSqlite: bytePrefixMatcher(sqliteMagic),
-	TypeNes:    bytePrefixMatcher(nesMagic),
-	TypeCrx:    bytePrefixMatcher(crxMagic),
-	TypeCab:    Cab,
-	TypeDeb:    bytePrefixMatcher(debMagic),
-	TypeAr:     bytePrefixMatcher(arMagic),
-	TypeZ:      Z,
-	TypeLz:     bytePrefixMatcher(lzMagic),
-	TypeRpm:    Rpm,
-	TypeElf:    Elf,
-	TypeDcm:    Dcm,
-	TypeIso:    Iso,
-	TypeMachO:  MachO,
+	TypeEpub:    bytePrefixMatcher(epubMagic),
+	TypeZip:     Zip,
+	TypeTar:     Tar,
+	TypeRar:     Rar,
+	TypeGz:      bytePrefixMatcher(gzMagic),
+	TypeBz2:     bytePrefixMatcher(bz2Magic),
+	Type7z:      bytePrefixMatcher(sevenzMagic),
+	TypeXz:      bytePrefixMatcher(xzMagic),
+	TypeZstd:    Zst,
+	TypePdf:     bytePrefixMatcher(pdfMagic),
+	TypeExe:     bytePrefixMatcher(exeMagic),
+	TypeSwf:     Swf,
+	TypeRtf:     bytePrefixMatcher(rtfMagic),
+	TypeEot:     Eot,
+	TypePs:      bytePrefixMatcher(psMagic),
+	TypeSqlite:  bytePrefixMatcher(sqliteMagic),
+	TypeNes:     bytePrefixMatcher(nesMagic),
+	TypeCrx:     bytePrefixMatcher(crxMagic),
+	TypeCab:     Cab,
+	TypeDeb:     bytePrefixMatcher(debMagic),
+	TypeAr:      bytePrefixMatcher(arMagic),
+	TypeZ:       Z,
+	TypeLz:      bytePrefixMatcher(lzMagic),
+	TypeRpm:     Rpm,
+	TypeElf:     Elf,
+	TypeDcm:     Dcm,
+	TypeIso:     Iso,
+	TypeMachO:   MachO,
+	TypeParquet: bytePrefixMatcher(parquetMagic),
 }
 
 var (
@@ -92,9 +94,10 @@ var (
 		0x64, 0x65, 0x62, 0x69, 0x61, 0x6E, 0x2D, 0x62,
 		0x69, 0x6E, 0x61, 0x72, 0x79,
 	}
-	arMagic   = []byte{0x21, 0x3C, 0x61, 0x72, 0x63, 0x68, 0x3E}
-	zstdMagic = []byte{0x28, 0xB5, 0x2F, 0xFD}
-	lzMagic   = []byte{0x4C, 0x5A, 0x49, 0x50}
+	arMagic      = []byte{0x21, 0x3C, 0x61, 0x72, 0x63, 0x68, 0x3E}
+	zstdMagic    = []byte{0x28, 0xB5, 0x2F, 0xFD}
+	lzMagic      = []byte{0x4C, 0x5A, 0x49, 0x50}
+	parquetMagic = []byte{0x50, 0x41, 0x52, 0x31}
 )
 
 func bytePrefixMatcher(magicPattern []byte) Matcher {

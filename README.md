@@ -275,6 +275,7 @@ func main() {
 - **wasm** - `application/wasm`
 - **dex** - `application/vnd.android.dex`
 - **dey** - `application/vnd.android.dey`
+- **parquet** - `application/vnd.apache.parquet`
 
 ## Benchmarks
 
