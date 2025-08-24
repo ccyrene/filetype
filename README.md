@@ -44,7 +44,7 @@ import (
   "fmt"
   "io/ioutil"
 
-  "github.com/h2non/filetype"
+  "github.com/ccyrene/filetype"
 )
 
 func main() {
@@ -69,7 +69,7 @@ import (
   "fmt"
   "io/ioutil"
 
-  "github.com/h2non/filetype"
+  "github.com/ccyrene/filetype"
 )
 
 func main() {
@@ -91,7 +91,7 @@ package main
 import (
   "fmt"
 
-  "github.com/h2non/filetype"
+  "github.com/ccyrene/filetype"
 )
 
 func main() {
@@ -120,7 +120,7 @@ import (
   "fmt"
   "os"
 
-  "github.com/h2non/filetype"
+  "github.com/ccyrene/filetype"
 )
 
 func main() {
@@ -147,7 +147,7 @@ package main
 import (
   "fmt"
 
-  "github.com/h2non/filetype"
+  "github.com/ccyrene/filetype"
 )
 
 var fooType = filetype.NewType("foo", "foo/foo")
