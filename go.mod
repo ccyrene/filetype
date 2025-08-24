@@ -1,4 +1,4 @@
-module github.com/ccyrene/filetype v1.1.3
+module github.com/ccyrene/filetype
 
 go 1.13
 
