@@ -21,7 +21,7 @@ For SVG file type checking, see [go-is-svg](https://github.com/h2non/go-is-svg) 
 ## Installation
 
 ```bash
-go get github.com/ccyrene/filetype@master
+go get github.com/ccyrene/filetype
 ```
 
 ## API
