@@ -135,11 +135,11 @@ func TestMP3MatchMap(t *testing.T) {
 		kind types.Type
 	}{
 		{[]byte{0x49, 0x44, 0x33}, types.Get("mp3")},
-		{[]byte{0xFF, 0xfb}, types.Get("mpeg2")},
-		{[]byte{0xFF, 0xFA}, types.Get("mpeg2")},
-		{[]byte{0xFF, 0xF3}, types.Get("mpeg2")},
-		{[]byte{0xFF, 0xF2}, types.Get("mpeg2")},
-		{[]byte{0xFF, 0xE3}, types.Get("mpeg2")},
+		{[]byte{0xFF, 0xfb}, types.Get("mp3")},
+		{[]byte{0xFF, 0xFA}, types.Get("mp3")},
+		{[]byte{0xFF, 0xF3}, types.Get("mp3")},
+		{[]byte{0xFF, 0xF2}, types.Get("mp3")},
+		{[]byte{0xFF, 0xE3}, types.Get("mp3")},
 		{[]byte{0xFF}, Unknown},
 		{[]byte{0x00, 0x11, 0x22}, Unknown},
 		{[]byte{0xFF, 0x00, 0x00}, Unknown},

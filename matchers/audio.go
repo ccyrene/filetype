@@ -1,22 +1,20 @@
 package matchers
 
 var (
-	TypeMidi  = newType("mid", "audio/midi")
-	TypeMp3   = newType("mp3", "audio/mpeg")
-	TypeMpeg2 = newType("mpeg2", "audio/mpeg2")
-	TypeM4a   = newType("m4a", "audio/mp4")
-	TypeOgg   = newType("ogg", "audio/ogg")
-	TypeFlac  = newType("flac", "audio/x-flac")
-	TypeWav   = newType("wav", "audio/x-wav")
-	TypeAmr   = newType("amr", "audio/amr")
-	TypeAac   = newType("aac", "audio/aac")
-	TypeAiff  = newType("aiff", "audio/x-aiff")
+	TypeMidi = newType("mid", "audio/midi")
+	TypeMp3  = newType("mp3", "audio/mpeg")
+	TypeM4a  = newType("m4a", "audio/mp4")
+	TypeOgg  = newType("ogg", "audio/ogg")
+	TypeFlac = newType("flac", "audio/x-flac")
+	TypeWav  = newType("wav", "audio/x-wav")
+	TypeAmr  = newType("amr", "audio/amr")
+	TypeAac  = newType("aac", "audio/aac")
+	TypeAiff = newType("aiff", "audio/x-aiff")
 )
 
 var Audio = Map{
 	TypeMidi: Midi,
 	TypeMp3:  Mp3,
-	TypeMpeg2: Mpeg2,
 	TypeM4a:  M4a,
 	TypeOgg:  Ogg,
 	TypeFlac: Flac,
@@ -32,7 +30,11 @@ func Midi(buf []byte) bool {
 		buf[2] == 0x68 && buf[3] == 0x64
 }
 
-func Mpeg2(buf []byte) bool {
+func Mp3(buf []byte) bool {
+    if len(buf) >= 3 && buf[0] == 0x49 && buf[1] == 0x44 && buf[2] == 0x33 {
+        return true
+    }
+
     if len(buf) >= 2 {
         switch buf[1] {
         case 0xFB, 0xFA, 0xF3, 0xF2, 0xE3:
@@ -42,12 +44,6 @@ func Mpeg2(buf []byte) bool {
         }
     }
     return false
-}
-
-func Mp3(buf []byte) bool {
-	return len(buf) > 2 &&
-		((buf[0] == 0x49 && buf[1] == 0x44 && buf[2] == 0x33) ||
-			(buf[0] == 0xFF && buf[1] == 0xfb))
 }
 
 func M4a(buf []byte) bool {
