@@ -6,8 +6,8 @@ import (
 	"io/ioutil"
 	"testing"
 
-	"github.com/h2non/filetype/matchers"
-	"github.com/h2non/filetype/types"
+	"github.com/ccyrene/filetype/matchers"
+	"github.com/ccyrene/filetype/types"
 )
 
 func TestMatch(t *testing.T) {
@@ -126,6 +126,29 @@ func TestAddMatcher(t *testing.T) {
 
 	if !IsMIMESupported("foo/foo") {
 		t.Fatalf("Not supported MIME type")
+	}
+}
+
+func TestMP3MatchMap(t *testing.T) {
+	cases := []struct {
+		buf  []byte
+		kind types.Type
+	}{
+		{[]byte{0x49, 0x44, 0x33}, types.Get("mp3")},
+		{[]byte{0xFF, 0xfb}, types.Get("mp3")},
+		// {[]byte{0xFF, 0xFA}, types.Get("mp3")},
+		// {[]byte{0xFF, 0xF3}, types.Get("mp3")},
+		// {[]byte{0xFF, 0xF2}, types.Get("mp3")},
+		// {[]byte{0xFF, 0xE3}, types.Get("mp3")},
+		{[]byte{0xFF}, Unknown},
+		{[]byte{0x00, 0x11, 0x22}, Unknown},
+		{[]byte{0xFF, 0x00, 0x00}, Unknown},
+	}
+
+	for _, test := range cases {
+		if kind := MatchMap(test.buf, matchers.Audio); kind != test.kind {
+			t.Fatalf("Do not matches: %#v", test.buf)
+		}
 	}
 }
 

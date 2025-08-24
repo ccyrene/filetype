@@ -31,9 +31,20 @@ func Midi(buf []byte) bool {
 }
 
 func Mp3(buf []byte) bool {
-	return len(buf) > 2 &&
-		((buf[0] == 0x49 && buf[1] == 0x44 && buf[2] == 0x33) ||
-			(buf[0] == 0xFF && buf[1] == 0xfb))
+    if len(buf) >= 3 && buf[0] == 0x49 && buf[1] == 0x44 && buf[2] == 0x33 {
+        return true
+    }
+
+    if len(buf) >= 2 {
+        switch buf[1] {
+        case 0xFB, 0xFA, 0xF3, 0xF2, 0xE3:
+            if buf[0] == 0xFF {
+                return true
+            }
+        }
+    }
+
+    return false
 }
 
 func M4a(buf []byte) bool {
